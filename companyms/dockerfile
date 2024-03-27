@@ -1,0 +1,12 @@
+# Use a base image with Java (specify the version of Java you need)
+FROM openjdk:17
+
+# Add a label to your image to describe which service this Dockerfile is for
+LABEL service="companyms"
+
+# Add the jar file
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} app.jar
+
+# Set the default command to execute the jar file
+ENTRYPOINT ["java", "-jar", "/app.jar"]
